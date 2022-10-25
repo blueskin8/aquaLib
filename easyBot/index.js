@@ -21,7 +21,7 @@ Client.on('interactionCreate', interaction => {
     }
 })
 
-Client.login(app.token).catch((err) => {
+Client.login(config.token).catch((err) => {
     console.error("Une erreur est survenue durant la connexion du bot");
 }).then(() => {
     console.log(app.name.toString() + ' opérationnel !');

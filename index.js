@@ -11,7 +11,9 @@ if (config.messagesType !== "text") {
     }
 }
 
-if (!app.prefix || !app.name || !app.botColor || !app.token) throw 'AquaLib : app.json : Tous les paramètres de app.json doivent être complétés'
+if(!config.token) throw 'AquaLib : config.js : le paramètre token est vide'
+
+if (!app.prefix || !app.name || !app.botColor) throw 'AquaLib : app.json : Tous les paramètres de app.json doivent être complétés'
 
 
 module.exports.Commands = require('./easyCommands/commands/commands.js');
