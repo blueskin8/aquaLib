@@ -16,7 +16,7 @@ module.exports = (type = String, message = String, channel = Discord.TextChannel
                     msg = message;
                 }
                 if (config.messagesType == "embed") {
-                    msg = { embeds: [new Discord.EmbedBuilder().setColor(app.botColor).setTitle(message).setTimestamp().setFooter({ text: "Par " + app.name })] }
+                    msg = { embeds: [new Discord.EmbedBuilder().setColor(app.botColor).setTitle(message).setTimestamp().setFooter({text: "Par " + app.name, iconURL: app.iconURL})] }
                 }
             } else throw 'AquaLib : sendMessage : Le String message est obligatoire si le String type est custom'
         }
@@ -24,9 +24,9 @@ module.exports = (type = String, message = String, channel = Discord.TextChannel
         else if (type == "error") {
             if (config.messagesType == "embed") {
                 if (message) {
-                    msg = { embeds: [new Discord.EmbedBuilder().setColor("#EE4343").setTitle('Erreur').setDescription(message)] };
+                    msg = { embeds: [new Discord.EmbedBuilder().setColor("#EE4343").setTitle('Erreur').setDescription(message).setTimestamp().setFooter({text: "Par " + app.name, iconURL: app.iconURL})] };
                 } else if (!message) {
-                    msg = { embeds: [new Discord.EmbedBuilder().setColor("#EE4343").setTitle('Erreur').setDescription("Une erreur est survenue !")] };
+                    msg = { embeds: [new Discord.EmbedBuilder().setColor("#EE4343").setTitle('Erreur').setDescription("Une erreur est survenue !").setTimestamp().setFooter({text: "Par " + app.name, iconURL: app.iconURL})] };
                 }
             }
 
@@ -42,7 +42,7 @@ module.exports = (type = String, message = String, channel = Discord.TextChannel
         else if (type == "success") {
             if (config.messagesType == "embed") {
                 if (message) {
-                    msg = { embeds: [new Discord.EmbedBuilder().setColor("#35D668").setTitle('Parfait').setDescription(message)] };
+                    msg = { embeds: [new Discord.EmbedBuilder().setColor("#35D668").setTitle('Parfait').setDescription(message).setTimestamp().setFooter({text: "Par " + app.name, iconURL: app.iconURL})] };
                 } else if (!message) throw `AquaLib: sendMessage : Le String message est obligatoire si le String type est success`
             }
 

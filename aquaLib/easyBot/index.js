@@ -3,6 +3,7 @@ const app = require('../../config/app.json');
 const config = require('../../config/config.js')
 
 const easyCommands = require('../easyCommands/index.js');
+const sendMessage = require("./MessageCreator/sendMessage");
 
 const Client = new Discord.Client({
     presence: { status: "online" },
@@ -10,6 +11,12 @@ const Client = new Discord.Client({
 });
 
 Client.on('messageCreate', msg => {
+
+    if(msg.content == "<@" + Client.user.id + ">") {
+        if(config.autoCallMessageDelete == true && msg.deletable) msg.delete() 
+        return sendMessage('custom', "Mon préfix est : " + app.prefix, msg.channel)
+    }
+
     easyCommands.checkMessage(msg, Client);
 });
 

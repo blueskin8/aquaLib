@@ -1,13 +1,12 @@
 const Discord = require('discord.js')
 const app = require('../../../config/app.json');
+
 const config = require('../../../config/config.js');
 const Element = require('../../../Elements.js')
 const desc = require('./desc.js')
 
 let row;
 let rowFirst = new Discord.ActionRowBuilder().addComponents(new Discord.ButtonBuilder().setLabel("▶").setCustomId('BtnHelpCommandRight').setStyle(Discord.ButtonStyle.Primary))
-let rowLast;
-let buttons;
 
 let commands = [];
 let titles = [];
@@ -19,15 +18,17 @@ module.exports.initHelp = (Client, message) => {
     if(!message.content.startsWith(app.prefix + Element.HelpCommand.title.valueOf())) return;
     if(Element.HelpCommand.active == false) return;
     if (config.autoCallMessageDelete == true) message.delete()
+    const args = message.content.trim().split(/ +/g);
+
+    if(args[1]) {
+        if(titles.some(args[1]) == true) {
+            console.log(args[1])
+        } else console.log("error")
+    }
 
     message.channel.send("‎").then((message) => {
         message.edit({content: "", embeds: desc.HelpCommand.embed, components: [rowFirst]})
     })
-
-    /*for(let i = 0; i != commands.length; i++) {
-        let embed = desc[commands[i]]
-        message.channel.send(embed.embed)
-    }*/
 }
 
 module.exports.buttonGestionner = (Client, interaction) => {

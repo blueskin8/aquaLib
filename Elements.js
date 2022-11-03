@@ -5,5 +5,4 @@ module.exports = {
     "UserinfoCommand": { title: "userinfo", active: true },         // UserinfoCommand
     "BanCommand": { title: "ban", active: true },                   // BanCommand
     "TestCommand": { title: "test", active: true },                 // TestCommand
-    "TClearCommand": { title: "tclear", active: true },             // TClearCommand
 }
